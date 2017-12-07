@@ -19,7 +19,7 @@ var inputFile='fifa-18-demo-player-dataset/CompleteDataset.csv';
 min = 40;
 max = 100;
 color1 = [0,0,0]
-color2 = [160,0,160]
+color2 = [160,0,0]
 positions = ['GK','LB','CB','CDM','RB','LW','LM','RM','CM','RW','ST','CAM']
 
 function readData(){
@@ -35,13 +35,14 @@ function readData(){
 
 readData();
 
-function filter_by_atb(wmin,wmax,amin,amax){
+function filter_by_atb_country(wmin,wmax,amin,amax,country){
     var filtered = [];
     for(var i = 0; i < csvData.length; i++){
         var obj = csvData[i];
         currWage = parseInt(obj['Wage'].slice(1, -1));
         currAge = parseInt(obj['Age']);
-        if(currAge >= amin && currAge <= amax && currWage >= wmin && currWage <= wmax){
+        currCon = obj['Nationality'];
+        if(currAge >= amin && currAge <= amax && currWage >= wmin && currWage <= wmax && currCon == country){
             filtered.push(obj);
           }
     }
@@ -104,10 +105,11 @@ function generateColors(start,end,value,mi,ma){
     return hexc;
 }
 
-function create_gliphs(Atb,age_min,age_max,wage_min,wage_max){
-  filteredAgeWage = filter_by_atb(wage_min,wage_max,age_min,age_max);
+function create_gliphs(Atb,age_min,age_max,wage_min,wage_max,country){
+  filteredAgeWage = filter_by_atb_country(wage_min,wage_max,age_min,age_max,country);
   for(var k=0;k<12;k++){
-    avg = filter_by_pos(filteredAgeWage,positions[k],Atb);
+    avg = filter_by_pos(filteredAgeWage,positions[k],Atb)
+    console.log(avg);
     color=generateColors(color1,color2,avg,min,max);
     var cc = "";
     for(var l=0;l<14;l++){
@@ -122,7 +124,7 @@ function create_gliphs(Atb,age_min,age_max,wage_min,wage_max){
   var out = R("body.R")
     .call(function(err, d) {
         if (err){
-          console.log(d);
+          // console.log(d);
         }
       });
   for(var i = 0;i<12;i++){
@@ -137,9 +139,9 @@ app.all('/*', function(req, res, next) {
     var wage_max = parseInt(params.wage_max);
     var age_min = parseInt(params.age_min);
     var age_max = parseInt(params.age_max);
-    var Atb = params.atb;
-    if(typeof Atb != 'undefined'){
-      create_gliphs(Atb,age_min,age_max,wage_min,wage_max);
+    var atb = params.atb;
+    if(typeof atb != 'undefined'){
+      create_gliphs(atb,age_min,age_max,wage_min,wage_max,country);
     }
     res.sendFile('index.html', { root: __dirname });
 });
