@@ -16,7 +16,7 @@ var go = 0;
 var avg = 0.1;
 var inputFile='fifa-18-demo-player-dataset/CompleteDataset.csv';
 
-min = 40;
+min = 30;
 max = 100;
 color1 = [0,0,0]
 color2 = [160,0,0]
@@ -105,11 +105,11 @@ function generateColors(start,end,value,mi,ma){
     return hexc;
 }
 
-function create_gliphs(Atb,age_min,age_max,wage_min,wage_max,country){
+function create_gliphs(Atb,age_min,age_max,wage_min,wage_max,country,res){
   filteredAgeWage = filter_by_atb_country(wage_min,wage_max,age_min,age_max,country);
   for(var k=0;k<12;k++){
     avg = filter_by_pos(filteredAgeWage,positions[k],Atb)
-    console.log(avg);
+    // console.log(avg);
     color=generateColors(color1,color2,avg,min,max);
     var cc = "";
     for(var l=0;l<14;l++){
@@ -121,15 +121,20 @@ function create_gliphs(Atb,age_min,age_max,wage_min,wage_max,country){
         }
     });
   }
+  var counter = 0
   var out = R("body.R")
     .call(function(err, d) {
+        counter+=1;
         if (err){
           // console.log(d);
         }
+        else if(counter>14){
+          for(var i = 0;i<12;i++){
+            custom_crop(i+1);
+          }
+          res.sendFile('index.html', { root: __dirname });
+        }
       });
-  for(var i = 0;i<12;i++){
-    custom_crop(i+1);
-  }
 }
 
 app.all('/*', function(req, res, next) {
@@ -141,9 +146,9 @@ app.all('/*', function(req, res, next) {
     var age_max = parseInt(params.age_max);
     var atb = params.atb;
     if(typeof atb != 'undefined'){
-      create_gliphs(atb,age_min,age_max,wage_min,wage_max,country);
+      create_gliphs(atb,age_min,age_max,wage_min,wage_max,country,res);
     }
-    res.sendFile('index.html', { root: __dirname });
+    // res.sendFile('index.html', { root: __dirname });
 });
 
 var server = app.listen(8080);
