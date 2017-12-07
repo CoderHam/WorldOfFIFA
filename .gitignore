@@ -57,3 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
+#Color lists and player name
+color_lists/color*
+Rplots.pdf
+public/player*

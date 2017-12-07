@@ -19,8 +19,8 @@ var inputFile='fifa-18-demo-player-dataset/CompleteDataset.csv';
 min = 30;
 max = 100;
 color1 = [0,0,0]
-color2 = [160,0,0]
-positions = ['GK','LB','CB','CDM','RB','LW','LM','RM','CM','RW','ST','CAM']
+color2 = [160,0,160]
+positions = ['GK','LB','CB','CDM','RB','LW','LM','RM','RW','ST','CAM','CM']
 
 function readData(){
   csvData=[];
