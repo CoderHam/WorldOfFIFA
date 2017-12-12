@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Directive by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>FIFA 18 Visualization</title>
@@ -13,49 +8,39 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	    <link href="assets/css/nouislider.min.css" rel="stylesheet">
+	    <link rel="stylesheet" type="text/css" href="assets/js/tooltipster-master/dist/css/tooltipster.bundle.min.css" />
 	</head>
 	<body>
-		<!-- Header -->
-			<div id="header">
-				<span class="logo icon fa-university"></span>
-				<h1>Hi. This is Toan, Hemant, and Vamsy.</h1>
-				<p>A visualization of the world-acclaimed <a href="https://www.easports.com/fifa">FIFA 18</a>
-				<br />
-				that utilizes the <a href="https://www.kaggle.com/thec03u5/fifa-18-demo-player-dataset">Kaggle's Demo Player Dataset</a>.</p>
-			</div>
-
 		<!-- Main -->
-		<div id="tooltips" style="z-index: 2;">
-			<p>Average:</p>
-			<svg style="text-align:center;" width="450" height="450" id="svg_right"></<svg>
-		</div>
 			<div id="main">
-				<header class="major container 75%">
-					<h2> We visualize the average ratings of players in different playing positions </h2>
-				</header>
-				<div class="box alt container">
+				<div class="box alt container" id="main_content">
 					<img src="white_ff.png" id="field" height="600px" style="margin-left: -60px;"/>
-					<img src="/player1_crop.png" id="gk" onmouseover="displayBox('gk')" height="100px" style="margin-left: 50px; margin-top: -360px; position: absolute; z-index: 2;"/>
-					<img src="/player2_crop.png" id="def_1" onmouseover="displayBox('def_1')" height="100px" style="margin-left: 250px; margin-top: -565px; position: absolute; z-index: 2;" />
-					<img src="/player3_crop.png" id="def_2" height="100px" style="margin-left: 250px; margin-top: -435px; position: absolute; z-index: 2;" />
-					<img src="/player4_crop.png" id="def_3" height="100px" style="margin-left: 250px; margin-top: -295px; position: absolute; z-index: 2;" />
-					<img src="/player5_crop.png" id="def_4" height="100px" style="margin-left: 250px; margin-top: -155px; position: absolute; z-index: 2;" />
-
-					<img src="/player6_crop.png" id="mid_1" height="100px" style="margin-left: 550px; margin-top: -565px; position: absolute; z-index: 2;" />
-					<img src="/player7_crop.png" id="mid_2" height="100px" style="margin-left: 550px; margin-top: -435px; position: absolute; z-index: 2;" />
-					<img src="/player8_crop.png" id="mid_3" height="100px" style="margin-left: 550px; margin-top: -295px; position: absolute; z-index: 2;" />
-					<img src="/player9_crop.png" id="mid_4" height="100px" style="margin-left: 550px; margin-top: -155px; position: absolute; z-index: 2;" />
-
-					<img src="/player10_crop.png" id="sk_1" height="100px" style="margin-left: 740px; margin-top: -435px; position: absolute; z-index: 2;" />
-					<img src="/player11_crop.png" id="sk_2" height="100px" style="margin-left: 740px; margin-top: -295px; position: absolute; z-index: 2;" />
+					<img src="/player1_crop.png" class="tooltip" title="Goalkeeper" id="gk" height="100px" style="margin-left: 50px; margin-top: -360px; position: absolute; z-index: 2;"/>
+					<img src="/player2_crop.png" class="tooltip" id="def_1" title="Left Back" height="100px" style="margin-left: 250px; margin-top: -565px; position: absolute; z-index: 2;" />
+					<img src="/player3_crop.png" class="tooltip" id="def_2" title="Center Back" height="100px" style="margin-left: 250px; margin-top: -435px; position: absolute; z-index: 2;" />
+					<img src="/player4_crop.png" class="tooltip" title="Center Back" id="def_3" height="100px" style="margin-left: 250px; margin-top: -295px; position: absolute; z-index: 2;" />
+					<img src="/player5_crop.png" class="tooltip" title="Right Back" id="def_4" height="100px" style="margin-left: 250px; margin-top: -155px; position: absolute; z-index: 2;" />
+					<img src="/player6_crop.png" class="tooltip" title="Left Winger" id="mid_1" height="100px" style="margin-left: 550px; margin-top: -565px; position: absolute; z-index: 2;" />
+					<img src="/player7_crop.png" class="tooltip" title="Central Midfielder" id="mid_2" height="100px" style="margin-left: 550px; margin-top: -435px; position: absolute; z-index: 2;" />
+					<img src="/player8_crop.png" class="tooltip" title="Central Midfielder" id="mid_3" height="100px" style="margin-left: 550px; margin-top: -295px; position: absolute; z-index: 2;" />
+					<img src="/player9_crop.png" class="tooltip" title="Right Winger" id="mid_4" height="100px" style="margin-left: 550px; margin-top: -155px; position: absolute; z-index: 2;" />
+					<img src="/player10_crop.png" class="tooltip" title="Striker" id="sk_1" height="100px" style="margin-left: 740px; margin-top: -435px; position: absolute; z-index: 2;" />
+					<img src="/player11_crop.png" class="tooltip" title="Assisting Attacker" id="sk_2" height="100px" style="margin-left: 740px; margin-top: -295px; position: absolute; z-index: 2;" />
+					<div id="legend_title" style="margin-left: 370px; margin-top: -680px; position: absolute; z-index: 2; font-size: 25px; font-weight: bold">" "</div>
+					<svg id="legendLinear" width="100%" style="margin-left: 88px; margin-top: -650px; position: absolute; z-index: 2;"></svg>
+					<br>
+					<img src="/1.png" class="tooltip" title="England" height="50px" style="margin-left: -20px; margin-top: -20px; position: relative; z-index: 2;"/>
+					<img src="/2.png" class="tooltip" title="Spain" height="50px" style="margin-left: 110px; margin-top: -20px; position: relative; z-index: 2;"/>
+					<img src="/3.png" class="tooltip" title="Brazil" height="50px" style="margin-left: 110px; margin-top: -20px; position: relative; z-index: 2;"/>
+					<img src="/4.png" class="tooltip" title="Argentina" height="50px" style="margin-left: 105px; margin-top: -20px; position: relative; z-index: 2;"/>
+					<img src="/5.png" class="tooltip" title="France" height="50px" style="margin-left: 100px; margin-top: -20px; position: relative; z-index: 2;"/>
+					<img src="/6.png" class="tooltip" title="Portugal" height="52.5px" style="margin-left: 107px; margin-top: -22px; position: absolute; z-index: 2;"/>
 
 					<div id="country_bar" style="display: block; margin: auto;"></div>
-
 					<div>You selected the country:
 						<br>
 					<span id="country-value" style="font-size: 25px; font-weight: bold;"></span>
 					</div>
-
 					<div id="age_bar" style="position: absolute; z-index: 2;"></div>
 					<div id="wage_bar" style="position: absolute; z-index: 2;"></div>
 
@@ -63,69 +48,33 @@
 					<div id="wage_caption" style="margin-left: -150px; margin-top: -120px; position: absolute; z-index: 2; font-size: 25px; font-weight: bold"> Wage </div>
 
 
-					<a href="" class="myButton" style="margin-left: 890px;
+					<a class="button" style="margin-left: 890px;
 														margin-top: -590px;
-														background-color:#44c767;
 														position: absolute;
 														z-index: 2;
-														-moz-border-radius:28px;
-														-webkit-border-radius:28px;
-														border-radius:28px;
-														border:1px solid #18ab29;
-														display:inline-block;
-														cursor:pointer;
-														color:#ffffff;
-														font-family:Arial;
-														font-size:17px;
-														padding:16px 31px;
-														text-decoration:none;
-														text-shadow:0px 1px 0px #2f6627;"
+														min-width: 5em;"
 														onclick="display_ratings()">Ratings</a>
 
-					<a href="" class="myButton" style="margin-left: 890px;
+					<a class="button" style="margin-left: 890px;
 														margin-top: -420px;
-														background-color:#44c767;
 														position: absolute;
 														z-index: 2;
-														-moz-border-radius:28px;
-														-webkit-border-radius:28px;
-														border-radius:28px;
-														border:1px solid #18ab29;
-														display:inline-block;
-														cursor:pointer;
-														color:#ffffff;
-														font-family:Arial;
-														font-size:17px;
-														padding:16px 31px;
-														text-decoration:none;
-														text-shadow:0px 1px 0px #2f6627;"
+														min-width: 5em"
 														onclick="display_strength()">Strength</a>
 
-					<a class="myButton" style="margin-left: 890px;
+					<a class="button" style="margin-left: 890px;
 														margin-top: -270px;
-														background-color:#44c767;
+														min-width: 5em;
 														position: absolute;
-														z-index: 2;
-														-moz-border-radius:28px;
-														-webkit-border-radius:28px;
-														border-radius:28px;
-														border:1px solid #18ab29;
-														display:inline-block;
-														cursor:pointer;
-														color:#ffffff;
-														font-family:Arial;
-														font-size:17px;
-														padding:16px 31px;
-														text-decoration:none;
-														text-shadow:0px 1px 0px #2f6627;"
+														z-index: 2;"
 														onclick="display_stamina()">Stamina</a>
 				</div>
-
 				<footer class="major container 75%">
-					<h3>Get shady with science</h3>
-					<p>Vitae natoque dictum etiam semper magnis enim feugiat amet curabitur tempor orci penatibus. Tellus erat mauris ipsum fermentum etiam vivamus.</p>
+					<h3>Tableau Visualization</h3>
+					<p>We attempt to display the world map of FIFA players.</p>
 					<ul class="actions">
-						<li><a href="#" class="button">Join our crew</a></li>
+						<li><a href="#" class="button">Tableau Story 1</a></li>
+						<li><a href="#" class="button">Tableau Story 2</a></li>
 					</ul>
 				</footer>
 
@@ -136,12 +85,8 @@
 				<div class="container 75%">
 
 					<header class="major last">
-						<h2>Questions or comments?</h2>
+						<h2>Designed by Toan Luong and Hemant Jain</h2>
 					</header>
-
-					<p>Vitae natoque dictum etiam semper magnis enim feugiat amet curabitur tempor
-					orci penatibus. Tellus erat mauris ipsum fermentum etiam vivamus.</p>
-
 					<form method="post" action="#">
 						<div class="row">
 							<div class="6u 12u(mobilep)">
@@ -159,7 +104,7 @@
 						<div class="row">
 							<div class="12u">
 								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
+									<li><input type="submit" value="Send Feedback" /></li>
 								</ul>
 							</div>
 						</div>
@@ -189,8 +134,12 @@
 			<script src="assets/js/jquery/jquery-ui.js"></script>
 			<script src="assets/js/nouislider.min.js"></script>
 			<script src="assets/js/wNumb.js"></script>
+			<script src="https://d3js.org/d3.v4.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.0/d3-legend.js"></script>
+			<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+			<script src="assets/js/tooltipster-master/dist/js/tooltipster.bundle.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		</body>
-
 <script>
 	// Country Bar
 	var country_bar = document.getElementById('country_bar');
@@ -206,11 +155,11 @@
 			'80%': [4],
 			'max': [5]
 		},
-		snap: true
+		snap: true,
 	});
 
 	country_bar.noUiSlider.on('update', function( values, handle ) {
-		var lookupValues = ["England", "Spain", "Brazil", "USA", "India", "China"];
+		var lookupValues = ["England", "Spain", "Brazil", "Argentina", "France", "Portugal"];
 		CountryValueElement.innerHTML = lookupValues[parseInt(values[handle])];
 	});
 
@@ -255,7 +204,7 @@
 			decimals: 0,
 			mark: '.',
 			thousand: ',',
-			prefix: '$ ',
+			prefix: '€ ',
 			suffix: ' m'
 		}),
 		range: {
@@ -265,7 +214,7 @@
 	});
 
 	function display_stamina(){
-		var lookupValues = ["England", "Spain", "Brazil", "USA", "India", "China"];
+		var lookupValues = ["England", "Spain", "Brazil", "Argentina", "France", "Portugal"];
 		var country_code = country_bar.noUiSlider.get(); // [0 to 5]
 		var country = lookupValues[parseInt(country_code)];
 		var wage =  wage_bar.noUiSlider.get();
@@ -278,7 +227,7 @@
 		location.href = "http://localhost:8080" + "?country=" + country + "&atb=Stamina&wage_min=" + wage_min + "&wage_max=" + wage_max + "&age_min=" + age_min + "&age_max=" + age_max;
 	}
 	function display_ratings(){
-		var lookupValues = ["England", "Spain", "Brazil", "USA", "India", "China"];
+		var lookupValues = ["England", "Spain", "Brazil", "Argentina", "France", "Portugal"];
 		var country_code = country_bar.noUiSlider.get(); // [0 to 5]
 		var country = lookupValues[parseInt(country_code)];
 		var wage =  wage_bar.noUiSlider.get();
@@ -291,7 +240,7 @@
 		location.href = "http://localhost:8080" + "?country=" + country + "&atb=Overall&wage_min=" + wage_min + "&wage_max=" + wage_max + "&age_min=" + age_min + "&age_max=" + age_max;
 	}
 	function display_strength(){
-		var lookupValues = ["England", "Spain", "Brazil", "USA", "India", "China"];
+		var lookupValues = ["England", "Spain", "Brazil", "Argentina", "France", "Portugal"];
 		var country_code = country_bar.noUiSlider.get(); // [0 to 5]
 		var country = lookupValues[parseInt(country_code)];
 		var wage =  wage_bar.noUiSlider.get();
@@ -303,15 +252,116 @@
 		console.log(country, wage_min, wage_max, age_min, age_max)
 		location.href = "http://localhost:8080" + "?country=" + country + "&atb=Strength&wage_min=" + wage_min + "&wage_max=" + wage_max + "&age_min=" + age_min + "&age_max=" + age_max;
 	}
-	function displayBox(iid){
-		var item = document.getElementById(iid);
-		var pos = item.getBoundingClientRect();
-		var x_pos = pos.left + window.scrollX;
-		var y_pos = pos.right + + window.scrollY;
-		tip = document.getElementById('tooltips');
-		tip.style.position = "absolute";
-		tip.style.left = x_pos+'px';
-		tip.style.top = y_pos+'px';
+
+	// Color Legend
+	var grad_min = 0;
+	var grad_max = 0;
+	var player_stats;
+	function getData(file)
+	{
+	    var rawFile = new XMLHttpRequest();
+	    rawFile.open("GET", file, false);
+	    rawFile.onreadystatechange = function ()
+	    {
+	        if(rawFile.readyState === 4)
+	        {
+	            if(rawFile.status === 200 || rawFile.status == 0)
+	            {
+	                var allText = rawFile.responseText;
+					var arr = allText.split('\n');
+					grad_min = parseInt(arr[0])
+					grad_max = parseInt(arr[1])
+					player_stats = arr
+	            }
+	        }
+	    }
+	    rawFile.send(null);
 	}
+	getData("/color_domain.txt");
+	console.log(grad_min, grad_max, player_stats);
+
+	var linear = d3.scaleLinear()
+	  .domain([grad_min, grad_max])
+	  .range(["rgb(220, 0, 220)", "rgb(60, 0, 60)"]);
+
+	var svg = d3.select("svg");
+
+	svg.append("g")
+	  .attr("id", "legendLinear")
+	  .attr("transform", "translate(20,10)");
+
+	var legendLinear = d3.legendColor()
+	  .shapeWidth(60)
+	  .cells(10)
+	  .orient('horizontal')
+	  .scale(linear);
+
+	svg.select("#legendLinear")
+	  .call(legendLinear);
+
+	function loadQueryString(){ 
+	    var parameters = {}; 
+	    var searchString = location.search.substr(1); 
+	    var pairs = searchString.split("&"); 
+	    var parts;
+	    for(i = 0; i < pairs.length; i++){
+	        parts = pairs[i].split("=");
+	        var name = parts[0];
+	        var data = decodeURI(parts[1]);
+	        parameters[name] = data;
+	    }
+	    return parameters;
+	}
+	params = loadQueryString();
+	console.log(params)
+	var lookupValues = ["England", "Spain", "Brazil", "Argentina", "France", "Portugal"];
+	wage_bar.noUiSlider.updateOptions({
+	    start: [params['wage_min'], params['wage_max']]
+	}, true);
+	age_bar.noUiSlider.updateOptions({
+	    start: [params['age_min'], params['age_max']]
+	}, true);
+	country_bar.noUiSlider.updateOptions({
+	    start: [parseInt(lookupValues.indexOf(params['country']))]
+	}, true);
+	if (params['atb'] == "Overall") {
+		document.getElementById("legend_title").innerHTML = "Rating";
+	}
+	else {
+		document.getElementById("legend_title").innerHTML = params['atb'];
+	}
+	
+	$(document).ready(function () {
+	    $('.tooltip').tooltipster({
+	    	theme: 'tooltipster-noir',
+	        position: 'right'
+	    });
+	});
+
+	var gk = document.getElementById('gk');
+	gk.title = "Average Goalkeeper " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[2];
+	var def_1 = document.getElementById('def_1');
+	def_1.title = "Average Left Back " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[3];
+	var def_2 = document.getElementById('def_2');
+	def_2.title = "Average Left Center Back " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[4];
+	var def_3 = document.getElementById('def_3');
+	def_3.title = "Average Right Center Back " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[5];
+	var def_4 = document.getElementById('def_4');
+	def_4.title = "Average Right Back " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[6];
+	
+	var mid_1 = document.getElementById('mid_1');
+	mid_1.title = "Average Left Winger " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[7];
+	var mid_2 = document.getElementById('mid_2');
+	mid_2.title = "Average Left Midfielder " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[8];
+	var mid_3 = document.getElementById('mid_3');
+	mid_3.title = "Average Right Midfielder " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[9];
+	var mid_4 = document.getElementById('mid_4');
+	mid_4.title = "Average Right Winger " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[10];
+
+	var sk_1 = document.getElementById('sk_1');
+	sk_1.title = "Average Striker " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[11];
+	var sk_2 = document.getElementById('sk_2');
+	sk_2.title = "Average Assisting Striker " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[12];
+
 </script>
 </html>

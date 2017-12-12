@@ -3126,17 +3126,4 @@
 					display: none;
 				}
 
-
-	#field {
-		position: absolute;
-		left: 0px;
-		top: 0px;
-		z-index: 1;
-	}
-	#player {
-		position: absolute;
-		left: 400px;
-		top: 100px;
-		z-index: 2;
-		opacity:0.5;
-	}
+}

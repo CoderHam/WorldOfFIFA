@@ -18,8 +18,9 @@ var inputFile='fifa-18-demo-player-dataset/CompleteDataset.csv';
 
 min = 30;
 max = 100;
-color1 = [0,0,0]
-color2 = [160,0,160]
+color1 = [60,0,60];
+var avgs = [0,0,0,0,0,0,0,1,0,0,0,0];
+color2 = [220,0,220];
 positions = ['GK','LB','CB','CDM','RB','LW','LM','RM','RW','ST','CAM','CM']
 
 function readData(){
@@ -74,9 +75,9 @@ function filtered_list(data,position,metric){
     return filtered;
 }
 
-// function sleep(ms) {
-//   return new Promise(resolve => setTimeout(resolve, ms));
-// }
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function custom_crop(player_num){
   Jimp.read("public/player"+player_num+".png", function (err, image) {
@@ -98,19 +99,31 @@ function generateColors(start,end,value,mi,ma){
     fin = 0;
     rgb = [0,0,0];
     for(var i=0;i<3;i++){
-      fin = start[i] + (((end[i] - start[i]) / steps) * value);
+      fin = start[i] + ((end[i] - start[i]) * (ma - value) / steps);
       rgb[i] = Math.floor(fin);
     }
     hexc = rgbToHex(rgb);
+    // console.log(hexc);
     return hexc;
 }
 
 function create_gliphs(Atb,age_min,age_max,wage_min,wage_max,country,res){
   filteredAgeWage = filter_by_atb_country(wage_min,wage_max,age_min,age_max,country);
+  console.log("______")
   for(var k=0;k<12;k++){
-    avg = filter_by_pos(filteredAgeWage,positions[k],Atb)
-    // console.log(avg);
-    color=generateColors(color1,color2,avg,min,max);
+    avgs[k] = filter_by_pos(filteredAgeWage,positions[k],Atb)
+    // console.log(avgs[k])
+  }
+  var max = avgs.reduce(function(a, b) {
+    return Math.max(a, b);
+  });
+  var min = avgs.reduce(function(a, b) {
+    return Math.min(a, b);
+  });
+  cdomain = min + "\n" + max;
+  for(var k=0;k<11;k++){
+    color=generateColors(color1,color2,avgs[k],parseInt(min),parseInt(max));
+    cdomain = cdomain + "\n" + avgs[k];
     var cc = "";
     for(var l=0;l<14;l++){
       cc = cc + color+"\n";
@@ -121,6 +134,12 @@ function create_gliphs(Atb,age_min,age_max,wage_min,wage_max,country,res){
         }
     });
   }
+  console.log(cdomain);
+  fs.writeFile("public/color_domain.txt", cdomain, function(err) {
+      if(err) {
+          return console.log(err);
+      }
+  });
   var counter = 0
   var out = R("body.R")
     .call(function(err, d) {
@@ -132,7 +151,8 @@ function create_gliphs(Atb,age_min,age_max,wage_min,wage_max,country,res){
           for(var i = 0;i<12;i++){
             custom_crop(i+1);
           }
-          res.sendFile('index.html', { root: __dirname });
+          sleep(2000);
+          // res.sendFile('index.html', { root: __dirname });
         }
       });
 }
@@ -148,7 +168,8 @@ app.all('/*', function(req, res, next) {
     if(typeof atb != 'undefined'){
       create_gliphs(atb,age_min,age_max,wage_min,wage_max,country,res);
     }
-    // res.sendFile('index.html', { root: __dirname });
+    res.sendFile('index.html', { root: __dirname });
 });
 
 var server = app.listen(8080);
+console.log('Server running. Go to url: \n http://localhost:8080/?country=England&atb=Overall&wage_min=1&wage_max=100&age_min=15&age_max=45')
