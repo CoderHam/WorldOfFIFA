@@ -9,6 +9,10 @@ Install nodejs using BREW:
   brew install node
 
 ***
+Install the necessary R packages by running this in RStudio:
+install.packages(c("grImport", "XML", "ggplot2","gridExtra"), dependencies = TRUE)
+
+***
 Once nodejs is install, to install the necessary packages by:
   npm install async express fast-csv fs http jimp r-script url
 

@@ -15,19 +15,19 @@
 			<div id="main">
 				<div class="box alt container" id="main_content">
 					<img src="white_ff.png" id="field" height="600px" style="margin-left: -60px;"/>
-					<img src="/player1_crop.png" class="tooltip" title="Goalkeeper" id="gk" height="100px" style="margin-left: 50px; margin-top: -360px; position: absolute; z-index: 2;"/>
-					<img src="/player2_crop.png" class="tooltip" id="def_1" title="Left Back" height="100px" style="margin-left: 250px; margin-top: -565px; position: absolute; z-index: 2;" />
-					<img src="/player3_crop.png" class="tooltip" id="def_2" title="Center Back" height="100px" style="margin-left: 250px; margin-top: -435px; position: absolute; z-index: 2;" />
-					<img src="/player4_crop.png" class="tooltip" title="Center Back" id="def_3" height="100px" style="margin-left: 250px; margin-top: -295px; position: absolute; z-index: 2;" />
-					<img src="/player5_crop.png" class="tooltip" title="Right Back" id="def_4" height="100px" style="margin-left: 250px; margin-top: -155px; position: absolute; z-index: 2;" />
-					<img src="/player6_crop.png" class="tooltip" title="Left Winger" id="mid_1" height="100px" style="margin-left: 550px; margin-top: -565px; position: absolute; z-index: 2;" />
-					<img src="/player7_crop.png" class="tooltip" title="Central Midfielder" id="mid_2" height="100px" style="margin-left: 550px; margin-top: -435px; position: absolute; z-index: 2;" />
-					<img src="/player8_crop.png" class="tooltip" title="Central Midfielder" id="mid_3" height="100px" style="margin-left: 550px; margin-top: -295px; position: absolute; z-index: 2;" />
-					<img src="/player9_crop.png" class="tooltip" title="Right Winger" id="mid_4" height="100px" style="margin-left: 550px; margin-top: -155px; position: absolute; z-index: 2;" />
-					<img src="/player10_crop.png" class="tooltip" title="Striker" id="sk_1" height="100px" style="margin-left: 740px; margin-top: -435px; position: absolute; z-index: 2;" />
-					<img src="/player11_crop.png" class="tooltip" title="Assisting Attacker" id="sk_2" height="100px" style="margin-left: 740px; margin-top: -295px; position: absolute; z-index: 2;" />
+					<img src="/player1_crop.png" class="tooltip" title="Goalkeeper" id="gk" height="100px" style="margin-left: -850px; margin-top: 240px; position: absolute; z-index: 2;"/>
+					<img src="/player2_crop.png" class="tooltip" id="def_1" title="Left Back" height="100px" style="margin-left: -650px; margin-top: 50px; position: absolute; z-index: 2;" />
+					<img src="/player3_crop.png" class="tooltip" id="def_2" title="Center Back" height="100px" style="margin-left: -650px; margin-top: 180px; position: absolute; z-index: 2;" />
+					<img src="/player4_crop.png" class="tooltip" title="Center Back" id="def_3" height="100px" style="margin-left: -650px; margin-top:  310px; position: absolute; z-index: 2;" />
+					<img src="/player5_crop.png" class="tooltip" title="Right Back" id="def_4" height="100px" style="margin-left: -650px; margin-top: 440px; position: absolute; z-index: 2;" />
+					<img src="/player6_crop.png" class="tooltip" title="Left Winger" id="mid_1" height="100px" style="margin-left: -350px; margin-top: 50px; position: absolute; z-index: 2;" />
+					<img src="/player7_crop.png" class="tooltip" title="Central Midfielder" id="mid_2" height="100px" style="margin-left: -350px; margin-top: 180px; position: absolute; z-index: 2;" />
+					<img src="/player8_crop.png" class="tooltip" title="Central Midfielder" id="mid_3" height="100px" style="margin-left: -350px; margin-top: 310px; position: absolute; z-index: 2;" />
+					<img src="/player9_crop.png" class="tooltip" title="Right Winger" id="mid_4" height="100px" style="margin-left: -350px; margin-top: 440px; position: absolute; z-index: 2;" />
+					<img src="/player10_crop.png" class="tooltip" title="Striker" id="sk_1" height="100px" style="margin-left: -160px; margin-top: 180px; position: absolute; z-index: 2;" />
+					<img src="/player11_crop.png" class="tooltip" title="Assisting Attacker" id="sk_2" height="100px" style="margin-left: -160px; margin-top: 310px; position: absolute; z-index: 2;" />
 					<div id="legend_title" style="margin-left: 370px; margin-top: -680px; position: absolute; z-index: 2; font-size: 25px; font-weight: bold">" "</div>
-					<svg id="legendLinear" width="100%" style="margin-left: 88px; margin-top: -650px; position: absolute; z-index: 2;"></svg>
+					<svg id="legendLinear" width="100%" style="margin-left: -820px; margin-top: -40px; position: absolute; z-index: 2;"></svg>
 					<br>
 					<img src="/1.png" class="tooltip" title="England" height="50px" style="margin-left: -20px; margin-top: -20px; position: relative; z-index: 2;"/>
 					<img src="/2.png" class="tooltip" title="Spain" height="50px" style="margin-left: 110px; margin-top: -20px; position: relative; z-index: 2;"/>
@@ -36,7 +36,7 @@
 					<img src="/5.png" class="tooltip" title="France" height="50px" style="margin-left: 100px; margin-top: -20px; position: relative; z-index: 2;"/>
 					<img src="/6.png" class="tooltip" title="Portugal" height="52.5px" style="margin-left: 107px; margin-top: -22px; position: absolute; z-index: 2;"/>
 
-					<div id="country_bar" style="display: block; margin: auto;"></div>
+					<div id="country_bar"></div>
 					<div>You selected the country:
 						<br>
 					<span id="country-value" style="font-size: 25px; font-weight: bold;"></span>
@@ -69,14 +69,14 @@
 														z-index: 2;"
 														onclick="display_stamina()">Stamina</a>
 				</div>
-				<footer class="major container 75%">
+				<!-- <footer class="major container 75%">
 					<h3>Tableau Visualization</h3>
 					<p>We attempt to display the world map of FIFA players.</p>
 					<ul class="actions">
 						<li><a href="#" class="button">Tableau Story 1</a></li>
 						<li><a href="#" class="button">Tableau Story 2</a></li>
 					</ul>
-				</footer>
+				</footer> -->
 
 			</div>
 
@@ -144,7 +144,7 @@
 	// Country Bar
 	var country_bar = document.getElementById('country_bar');
 	var CountryValueElement = document.getElementById('country-value');
-	country_bar.style.margin = 'auto auto';
+	country_bar.style.width = '850px';
 	noUiSlider.create(country_bar, {
 		start: [0],
 		range: {
@@ -299,10 +299,10 @@
 	svg.select("#legendLinear")
 	  .call(legendLinear);
 
-	function loadQueryString(){ 
-	    var parameters = {}; 
-	    var searchString = location.search.substr(1); 
-	    var pairs = searchString.split("&"); 
+	function loadQueryString(){
+	    var parameters = {};
+	    var searchString = location.search.substr(1);
+	    var pairs = searchString.split("&");
 	    var parts;
 	    for(i = 0; i < pairs.length; i++){
 	        parts = pairs[i].split("=");
@@ -330,7 +330,7 @@
 	else {
 		document.getElementById("legend_title").innerHTML = params['atb'];
 	}
-	
+
 	$(document).ready(function () {
 	    $('.tooltip').tooltipster({
 	    	theme: 'tooltipster-noir',
@@ -348,7 +348,7 @@
 	def_3.title = "Average Right Center Back " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[5];
 	var def_4 = document.getElementById('def_4');
 	def_4.title = "Average Right Back " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[6];
-	
+
 	var mid_1 = document.getElementById('mid_1');
 	mid_1.title = "Average Left Winger " + document.getElementById("legend_title").innerHTML +" : "+ player_stats[7];
 	var mid_2 = document.getElementById('mid_2');
